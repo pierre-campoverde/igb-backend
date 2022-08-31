@@ -1,5 +1,3 @@
-const { admin, db } = require("../utils/admin");
-
 module.exports = (request, response, next) => {
   let idToken;
   if (

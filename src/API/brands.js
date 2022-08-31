@@ -1,6 +1,5 @@
-const { error } = require("firebase-functions/logger");
 const { db } = require("../utils/admin");
-const { index, addObjects } = require("../utils/algolia");
+const { index } = require("../utils/algolia");
 exports.getAllBrands = (req, res) => {
   db.collection("brands")
     .get()
@@ -39,6 +38,9 @@ exports.deleteBrand = (request, response) => {
   const docRef = db.collection("brands").doc(request.params.id);
   docRef
     .delete()
+    .then(() => {
+      index.deleteObject(request.params.id);
+    })
     .then(() => {
       return response
         .status(200)
@@ -107,11 +109,32 @@ exports.updateOneBrand = (request, response) => {
       return response.status(500).send(error);
     });
 };
+//This method is for development only
+exports.deleteBrands = (request, response) => {
+  const data = request.body.items;
+  Promise.all(
+    data.map((item) => {
+      db.collection("brands").doc(item).delete();
+    })
+  )
+    .then(index.deleteObjects(data))
+    .then(() => {
+      return response.status(200).send("Records deleted");
+    })
+    .catch((error) => {
+      console.log(error);
+      return response.status(500).send("Error");
+    });
+};
+//POST BRANDS
 exports.postManyBrands = (request, response) => {
   const data = request.body;
 
+  const formatedData = data.map((item) => {
+    return { ...item, objectID: item.Tramite };
+  });
   Promise.all(
-    data.map((item) => {
+    formatedData.map((item) => {
       db.collection("brands").doc(item.objectID).set({
         denominacion: item.Denominacion,
         clase: item.Clase,
@@ -120,7 +143,7 @@ exports.postManyBrands = (request, response) => {
       });
     })
   )
-    .then(index.saveObjects(data).wait())
+    .then(index.saveObjects(formatedData).wait())
     .then(() => {
       return response.status(200).json({ message: "It works" });
     })

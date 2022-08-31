@@ -8,6 +8,7 @@ const {
   getOneBrand,
   deleteBrand,
   updateOneBrand,
+  deleteBrands,
 } = require("./src/API/brands");
 const { loginUser, logoutUser } = require("./src/API/users");
 //Options to cross origin policy
@@ -18,13 +19,14 @@ app.use(
     credentials: true,
   })
 );
-// //Routes
+app.app; // //Routes
 app.get("/brands", getAllBrands);
 app.post("/brands", postOneBrand);
 app.get("/brands/:id", getOneBrand);
 app.put("/brands/:id", updateOneBrand);
 app.delete("/brands/:id", deleteBrand);
 app.post("/gazeta", postManyBrands);
+app.delete("/gazeta", deleteBrands);
 //Auth routes
 app.post("/login", loginUser);
 app.delete("/login", logoutUser);
