@@ -93,14 +93,18 @@ exports.postOneBrand = (request, response) => {
 exports.updateOneBrand = (request, response) => {
   const data = request.body;
   const docRef = db.collection("brands").doc(request.params.id);
+  console.log();
   docRef
     .set({
-      denominacion: data.denominacion,
-      clase: data.clase,
-      pagina: data.pagina,
-      gazeta: data.gazeta,
+      Denominacion: data.Denominacion,
+      Clase: parseInt(data.Clase),
+      Pagina: parseInt(data.Pagina),
+      Gazeta: parseInt(data.Gazeta),
     })
     .then(() => {
+      index.saveObject(data);
+    })
+    .then((res) => {
       return response
         .status(200)
         .json({ message: "Content updated successfully" });
@@ -136,10 +140,10 @@ exports.postManyBrands = (request, response) => {
   Promise.all(
     formatedData.map((item) => {
       db.collection("brands").doc(item.objectID).set({
-        denominacion: item.Denominacion,
-        clase: item.Clase,
-        pagina: item.Pagina,
-        gazeta: item.Gazeta,
+        Denominacion: item.Denominacion,
+        Clase: item.Clase,
+        Pagina: item.Pagina,
+        Gazeta: item.Gazeta,
       });
     })
   )
