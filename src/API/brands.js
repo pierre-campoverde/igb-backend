@@ -131,28 +131,23 @@ exports.deleteBrands = (request, response) => {
     });
 };
 //POST BRANDS
-exports.postManyBrands = (request, response) => {
+exports.postManyBrands = async (request, response) => {
   const data = request.body;
-
-  const formatedData = data.map((item) => {
-    return { ...item, objectID: item.Tramite };
-  });
-  Promise.all(
-    formatedData.map((item) => {
-      db.collection("brands").doc(item.objectID).set({
-        Denominacion: item.Denominacion,
-        Clase: item.Clase,
-        Pagina: item.Pagina,
-        Gazeta: item.Gazeta,
-      });
-    })
-  )
-    .then(index.saveObjects(formatedData).wait())
-    .then(() => {
-      return response.status(200).json({ message: "It works" });
-    })
-    .catch((error) => {
-      console.log(error);
-      return response.status(500);
-    });
+  try {
+    await Promise.all(
+      data.map((item) => {
+        db.collection("brands").doc(item.objectID).set({
+          Denominacion: item.Denominacion,
+          Clase: item.Clase,
+          Pagina: item.Pagina,
+          Gazeta: item.Gazeta,
+        });
+      })
+    );
+    await index.saveObjects(data).wait();
+    return response.status(200).send({ message: "Records created sucesfully" });
+  } catch (error) {
+    console.log(error);
+    return response.status(500).send(error);
+  }
 };

@@ -16,7 +16,7 @@ var cookieParser = require("cookie-parser");
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://igb.vercel.app/",
     credentials: true,
   })
 );
