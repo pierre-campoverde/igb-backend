@@ -13,7 +13,6 @@ const {
 const { loginUser, logoutUser } = require("./src/API/users");
 //Options to cross origin policy
 var cookieParser = require("cookie-parser");
-app.use(cookieParser());
 app.use(
   cors({
     origin: "https://igb.vercel.app/",

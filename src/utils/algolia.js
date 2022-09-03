@@ -1,8 +1,7 @@
 const algoliasearch = require("algoliasearch");
 const algoliaClient = algoliasearch(
-  "3VD6ADKUBH",
-  "16e3e0658f5b619ec3e67cc293c6a027"
+  "FESD5CF6G8",
+  "ae1eef93abaceb5bd551b416e2fef296"
 );
-const index = algoliaClient.initIndex("dev_igb");
-
+const index = algoliaClient.initIndex("igb_marcas_dev");
 module.exports = { index };
