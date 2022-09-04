@@ -15,7 +15,7 @@ const { loginUser, logoutUser } = require("./src/API/users");
 var cookieParser = require("cookie-parser");
 app.use(
   cors({
-    origin: "https://igb.vercel.app/",
+    origin: "https://igb.vercel.app",
     credentials: true,
   })
 );
