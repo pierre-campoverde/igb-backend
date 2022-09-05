@@ -1,5 +1,8 @@
 const { db } = require("../utils/admin");
 const { index } = require("../utils/algolia");
+const fs = require("fs");
+const StreamArray = require("stream-json/streamers/StreamArray");
+
 exports.getAllBrands = (req, res) => {
   db.collection("brands")
     .get()
@@ -133,26 +136,35 @@ exports.deleteBrands = (request, response) => {
 //POST BRANDS
 exports.postManyBrands = async (request, response) => {
   const data = request.body;
+  const slicedData = [];
+  if (data.length > 1000) {
+    const firts_chunk = data.slice(0, data.length / 2);
+    const second_chunk = data.slice(data.length / 2);
+    slicedData.push(firts_chunk);
+    slicedData.push(second_chunk);
+  }
 
-  const formatedData = data.map((item) => {
-    return { ...item, objectID: item.Tramite };
-  });
-  Promise.all(
-    formatedData.map((item) => {
-      db.collection("brands").doc(item.objectID).set({
-        Denominacion: item.Denominacion,
-        Clase: item.Clase,
-        Pagina: item.Pagina,
-        Gazeta: item.Gazeta,
-      });
-    })
-  )
-    .then(index.saveObjects(formatedData).wait())
-    .then(() => {
-      return response.status(200).json({ message: "It works" });
-    })
-    .catch((error) => {
-      console.log(error);
-      return response.status(500);
+  try {
+    await Promise.all(
+      data.map((item) => {
+        db.collection("brands").doc(item.objectID).set({
+          Denominacion: item.Denominacion,
+          Clase: item.Clase,
+          Pagina: item.Pagina,
+          Gazeta: item.Gazeta,
+        });
+      })
+    );
+    slicedData.forEach(async (data) => {
+      try {
+        await index.saveObjects(data).wait();
+      } catch (error) {
+        return response.status(500).send({ error: error });
+      }
     });
+    return response.status(200).json({ message: "It works" });
+  } catch (error) {
+    console.log(error);
+    return response.status(500).send({ error: error });
+  }
 };
