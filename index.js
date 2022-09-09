@@ -15,12 +15,11 @@ const { loginUser, logoutUser } = require("./src/API/users");
 var cookieParser = require("cookie-parser");
 app.use(
   cors({
-    origin: "http://localhost:3000",
-    // origin: "https://igb.vercel.app",
+    origin: "https://igb.vercel.app",
     credentials: true,
   })
 );
-app.app; // //Routes
+
 app.get("/brands", getAllBrands);
 app.post("/brands", postOneBrand);
 app.get("/brands/:id", getOneBrand);

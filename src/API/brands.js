@@ -1,7 +1,5 @@
 const { db } = require("../utils/admin");
 const { index } = require("../utils/algolia");
-const fs = require("fs");
-const StreamArray = require("stream-json/streamers/StreamArray");
 
 exports.getAllBrands = (req, res) => {
   db.collection("brands")
@@ -162,7 +160,9 @@ exports.postManyBrands = async (request, response) => {
         return response.status(500).send({ error: error });
       }
     });
-    return response.status(200).json({ message: "It works" });
+    return response
+      .status(200)
+      .json({ message: "Marcas Cargadas Exitosamente" });
   } catch (error) {
     console.log(error);
     return response.status(500).send({ error: error });
