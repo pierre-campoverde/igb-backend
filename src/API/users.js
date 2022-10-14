@@ -42,6 +42,9 @@ exports.loginUser = (request, response) => {
     });
 };
 
+exports.authVerify = (request, response) => {
+  //TODO Add auth method
+};
 exports.logoutUser = (request, response) => {
   signOut(auth)
     .then(() => {

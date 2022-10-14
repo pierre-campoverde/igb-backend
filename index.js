@@ -20,7 +20,6 @@ app.use(
     credentials: true,
   })
 );
-app.app; // //Routes
 app.post("/brands", postOneBrand);
 app.get("/brands/:id", getOneBrand);
 app.put("/brands/:id", updateOneBrand);
@@ -28,6 +27,9 @@ app.delete("/brands/:id", deleteBrand);
 app.post("/gazeta", postManyBrands);
 app.delete("/gazeta", deleteBrands);
 //Auth routes
+app.post("/authVerify", (req, res) => {
+  res.send("User verified");
+});
 app.post("/login", loginUser);
 app.delete("/login", logoutUser);
 
