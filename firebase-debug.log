@@ -344,3 +344,159 @@
 [info] i  functions: Finished "api" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in ~1s"}}
 [debug] [2022-09-05T17:35:49.579Z] [worker-us-central1-api-c76bbaf7-73f8-4db1-8432-e9859cdb53ac]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-c76bbaf7-73f8-4db1-8432-e9859cdb53ac]: IDLE"}}
 [debug] [2022-09-05T17:35:49.580Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2022-10-14T21:12:56.744Z] ----------------------------------------------------------------------
+[debug] [2022-10-14T21:12:56.745Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve -p 5001
+[debug] [2022-10-14T21:12:56.746Z] CLI Version:   11.7.0
+[debug] [2022-10-14T21:12:56.746Z] Platform:      darwin
+[debug] [2022-10-14T21:12:56.746Z] Node Version:  v16.13.1
+[debug] [2022-10-14T21:12:56.747Z] Time:          Fri Oct 14 2022 18:12:56 GMT-0300 (Argentina Standard Time)
+[debug] [2022-10-14T21:12:56.747Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-14T21:12:56.801Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-14T21:12:56.801Z] > authorizing via signed-in user (jpcamverde9801@gmail.com)
+[debug] [2022-10-14T21:12:56.801Z] [iam] checking project igb-fonetica for permissions ["firebase.projects.get"]
+[debug] [2022-10-14T21:12:56.803Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/igb-fonetica:testIamPermissions [none]
+[debug] [2022-10-14T21:12:56.803Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/igb-fonetica:testIamPermissions x-goog-quota-user=projects/igb-fonetica
+[debug] [2022-10-14T21:12:56.803Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/igb-fonetica:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-10-14T21:12:57.775Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/igb-fonetica:testIamPermissions 200
+[debug] [2022-10-14T21:12:57.776Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/igb-fonetica:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-10-14T21:12:57.777Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/igb-fonetica [none]
+[debug] [2022-10-14T21:12:58.209Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/igb-fonetica 200
+[debug] [2022-10-14T21:12:58.210Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/igb-fonetica {"projectId":"igb-fonetica","projectNumber":"633879905803","displayName":"iGB-fonetica","name":"projects/igb-fonetica","resources":{"hostingSite":"igb-fonetica","storageBucket":"igb-fonetica.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_40273588-7862-4da6-bfe2-dbab01360c58"}
+[info] 
+[info] === Serving from '/Users/pierrecampoverde/projects/IGB/backend'...
+[info] 
+[info] ✔  functions: Using node@16 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Using node@16 from host."}}
+[debug] [2022-10-14T21:12:58.230Z] defaultcredentials: writing to file /Users/pierrecampoverde/.config/firebase/jpcamverde9801_gmail_com_application_default_credentials.json
+[debug] [2022-10-14T21:12:58.231Z] Setting GAC to /Users/pierrecampoverde/.config/firebase/jpcamverde9801_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/pierrecampoverde/.config/firebase/jpcamverde9801_gmail_com_application_default_credentials.json"}}
+[debug] [2022-10-14T21:12:58.232Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/igb-fonetica/adminSdkConfig [none]
+[debug] [2022-10-14T21:12:59.322Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/igb-fonetica/adminSdkConfig 200
+[debug] [2022-10-14T21:12:59.322Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/igb-fonetica/adminSdkConfig {"projectId":"igb-fonetica","storageBucket":"igb-fonetica.appspot.com","locationId":"us-central"}
+[info] i  functions: Watching "/Users/pierrecampoverde/projects/IGB/backend/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/pierrecampoverde/projects/IGB/backend/functions\" for Cloud Functions..."}}
+[debug] [2022-10-14T21:12:59.364Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] ⚠  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2022-10-14T21:13:00.296Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "algoliasearch": "^4.14.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "firebase": "^9.9.3",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "stream-json": "^1.7.4"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-10-14T21:13:00.296Z] Building nodejs source
+[debug] [2022-10-14T21:13:00.296Z] Analyzing nodejs backend spec
+[debug] [2022-10-14T21:13:00.299Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-10-14T21:13:00.417Z] Serving at port 9005
+
+[debug] [2022-10-14T21:13:00.516Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-10-14T21:13:00.521Z] shutdown requested via /__/quitquitquit
+
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[info] ✔  functions[us-central1-api]: http function initialized (http://localhost:5001/igb-fonetica/us-central1/api). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5001/igb-fonetica/us-central1/api)."}}
+[debug] [2022-10-14T21:14:47.275Z] File /Users/pierrecampoverde/projects/IGB/backend/functions/index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/pierrecampoverde/projects/IGB/backend/functions/index.js changed, reloading triggers"}}
+[debug] [2022-10-14T21:14:48.279Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] ⚠  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2022-10-14T21:14:49.277Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "algoliasearch": "^4.14.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "firebase": "^9.9.3",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "stream-json": "^1.7.4"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-10-14T21:14:49.277Z] Building nodejs source
+[debug] [2022-10-14T21:14:49.278Z] Analyzing nodejs backend spec
+[debug] [2022-10-14T21:14:49.279Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-10-14T21:14:49.497Z] Serving at port 9005
+
+[debug] [2022-10-14T21:14:49.710Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-10-14T21:14:49.724Z] shutdown requested via /__/quitquitquit
+
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2022-10-14T21:14:53.668Z] File /Users/pierrecampoverde/projects/IGB/backend/functions/src/API/brands.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/pierrecampoverde/projects/IGB/backend/functions/src/API/brands.js changed, reloading triggers"}}
+[debug] [2022-10-14T21:14:53.768Z] File /Users/pierrecampoverde/projects/IGB/backend/functions/src/API/brands.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/pierrecampoverde/projects/IGB/backend/functions/src/API/brands.js changed, reloading triggers"}}
+[debug] [2022-10-14T21:14:54.771Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] ⚠  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2022-10-14T21:14:55.711Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "algoliasearch": "^4.14.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "firebase": "^9.9.3",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "stream-json": "^1.7.4"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-10-14T21:14:55.711Z] Building nodejs source
+[debug] [2022-10-14T21:14:55.711Z] Analyzing nodejs backend spec
+[debug] [2022-10-14T21:14:55.712Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-10-14T21:14:55.812Z] Serving at port 9005
+
+[debug] [2022-10-14T21:14:55.917Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-10-14T21:14:55.920Z] shutdown requested via /__/quitquitquit
+
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}

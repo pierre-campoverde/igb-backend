@@ -21,7 +21,6 @@ app.use(
   })
 );
 app.app; // //Routes
-app.get("/brands", getAllBrands);
 app.post("/brands", postOneBrand);
 app.get("/brands/:id", getOneBrand);
 app.put("/brands/:id", updateOneBrand);

@@ -3,29 +3,6 @@ const { index } = require("../utils/algolia");
 const fs = require("fs");
 const StreamArray = require("stream-json/streamers/StreamArray");
 
-exports.getAllBrands = (req, res) => {
-  db.collection("brands")
-    .get()
-    .then((data) => {
-      let brands = [];
-      data.forEach((doc) => {
-        brands.push({
-          brandId: doc.id,
-          denominacion: doc.data().denominacion,
-          clase: doc.data().clase,
-          pagina: doc.data().pagina,
-          gazeta: doc.data().gazeta,
-          numeroExpediente: doc.data().numeroExpediente,
-        });
-      });
-      return res.json(brands);
-    })
-    .catch((err) => {
-      console.log(err);
-      return res.status(500).json({ error: err.code });
-    });
-};
-
 exports.getOneBrand = (request, response) => {
   const docRef = db.collection("brands").doc(request.params.id);
   docRef.get().then((doc) => {
